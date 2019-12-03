@@ -32,7 +32,14 @@ int main(int argc, char *argv[])
     qDebug()<<str<<"\n\n";
 
     //long long int gg = binaryToDecimal(str);
-    //cout<<gg<<"\n"<<c;
+    cout<<gg<<"\n"<<c;
+    
+    
+//    char a='b';
+//    bitset<8>binarya(a);
+//    cout<<(char)binarya.to_ulong()<<endl;
+//    system("pause");
+//    return  0;
     
     return a.exec();
 }
