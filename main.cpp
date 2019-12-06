@@ -41,5 +41,10 @@ int main(int argc, char *argv[])
 //    system("pause");
 //    return  0;
     
+    string str ="45";// из строки в число
+    int b=0;
+    b=stoi(str);
+    cout<<b<<"\n";
+    
     return a.exec();
 }
