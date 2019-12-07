@@ -1,50 +1,70 @@
-long long int Packer::binaryToDecimal(QString n)
+#include <iostream>
+#include <conio.h>
+#include <string>
+#include <bitset>
+using namespace std;
+
+long long int binaryToDecimal(string str)
 {
-    QString num = n;
-    long long int dec_value = 0;
+	long long int dec_value = 0;
+	long long int base = 1;
 
-    // Initializing base value to 1, i.e 2^0
-    long long int base = 1;
+	long long int len = str.length();
+	for (int i = len - 1; i >= 0; i--) {
+		if (str[i] == '1')
+			dec_value += base;
+		base = base * 2;
+	}
 
-    long long int len = num.length();
-    for (int i = len - 1; i >= 0; i--) {
-        if (num[i] == '1')
-            dec_value += base;
-        base = base * 2;
-    }
-
-    return dec_value;
+	return dec_value;
 }
 
-int main(int argc, char *argv[])
+string decimalToBinary(long long int num)
 {
-    QCoreApplication a(argc, argv);
+	string str = "";
+	bitset<64> bit(num);
 
-    long long int c= 4616687675601289216;
-    bitset<64> bi(c);
-    //cout<<sizeof(bi)<<"   \n"<<bi<<"\n";
-    QString str="";
-    for(int i=63;0<=i;i--)
-    {
-        //str+= to_string(bi[i]);
-        str+= QString::number(bi[i]);
-    }
-    qDebug()<<str<<"\n\n";
+	str = bit.to_string();
 
-    //long long int gg = binaryToDecimal(str);
-    cout<<gg<<"\n"<<c;
-    
-    
-//    char a='b';
-//    bitset<8>binarya(a);
-//    cout<<(char)binarya.to_ulong()<<endl;
-//    system("pause");
-//    return  0;
-    
-    string str ="45";// из строки в число
-    int b=0;
-    b=stoi(str);
-    cout<<b<<"\n";
-    
-    return a.exec();
+	return str;
+}
+
+char binaryToChar(string str)
+{
+	char ch;
+	bitset<8> bit(binaryToDecimal(str));
+
+
+	ch = (char)bit.to_ulong();
+
+	return ch;
+}
+
+string charToBinary(char ch)
+{
+	bitset<8> bit(ch);
+
+	return bit.to_string();
+}
+
+
+int main()
+{
+	char ch = 'h';
+	string str = charToBinary(ch);
+	ch = ' ';
+	ch = binaryToChar(str);
+	cout << ch << "\n";
+
+	/*int b = 4;
+	string str = "";
+
+	str = decimalToBinary(b);
+	b = 0;
+	b = binaryToDecimal(str);
+	cout << b << "\n";*/
+
+
+	_getch();
+	return 0;
 }
