@@ -4,6 +4,27 @@
 #include <bitset>
 using namespace std;
 
+string Packer::strBitToChar(string bit)
+{
+    string str = "",strCache = "";
+    int count = 0;
+    for(auto i: bit)
+    {
+        if((count % 8) == 0 && count != 0)
+        {
+            str += binaryToChar(strCache);
+            strCache ="";
+        }
+
+        strCache += i;
+        ++count;
+    }
+    str += binaryToChar(strCache);
+
+
+    return str;
+}
+
 long long int binaryToDecimal(string str)
 {
 	long long int dec_value = 0;
